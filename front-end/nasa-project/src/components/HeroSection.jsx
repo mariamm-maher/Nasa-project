@@ -1,8 +1,66 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Dna, Atom, Telescope, Microscope } from "lucide-react";
+import { useState, useEffect } from "react";
+
+// Array of texts for the typing/deleting effect (moved outside component)
+const TYPING_TEXTS = [
+  "biological experiments in space",
+  "microgravity effects on living organisms",
+  "astrobiology research data",
+  "cellular adaptation studies",
+  "genetic responses to space travel",
+  "space agriculture innovations",
+];
 
 const HeroSection = () => {
+  // Typewriter effect state
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  // Typewriter effect with typing and deleting
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullText = TYPING_TEXTS[currentTextIndex];
+
+      if (!isDeleting) {
+        // Typing
+        setCurrentText(fullText.substring(0, currentText.length + 1));
+        setTypingSpeed(150 + Math.random() * 100); // Variable speed for realism
+
+        if (currentText === fullText) {
+          setTimeout(() => setIsDeleting(true), 2000); // Pause before deleting
+        }
+      } else {
+        // Deleting
+        setCurrentText(fullText.substring(0, currentText.length - 1));
+        setTypingSpeed(75); // Faster deleting
+
+        if (currentText === "") {
+          setIsDeleting(false);
+          setCurrentTextIndex((prev) => (prev + 1) % TYPING_TEXTS.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentTextIndex, typingSpeed]);
+
+  // Simple typewriter for main title
+  const [titleText, setTitleText] = useState("");
+  const fullTitle = "NASA Space Biology Knowledge Engine";
+
+  useEffect(() => {
+    if (titleText.length < fullTitle.length) {
+      const timer = setTimeout(() => {
+        setTitleText(fullTitle.substring(0, titleText.length + 1));
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [titleText, fullTitle]);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -22,131 +80,145 @@ const HeroSection = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
-
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating Bio Icons */}
+        {[Dna, Atom, Telescope, Microscope].map((Icon, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-gray-700/10"
+            style={{
+              left: `${15 + i * 25}%`,
+              top: `${20 + i * 15}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [0, 360],
+              opacity: [0.05, 0.15, 0.05],
+            }}
+            transition={{
+              duration: 10 + i * 2,
+              repeat: Infinity,
+              delay: i * 0.5,
+            }}
+          >
+            <Icon className="w-24 h-24" />
+          </motion.div>
+        ))}
+      </div>
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          {/* Main Heading */}
+          {/* Main Heading with Typewriter Effect */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold mb-6 text-glow"
+            className="text-5xl md:text-7xl font-bold mb-8 text-glow leading-tight"
           >
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              NASA Space Biology
-            </span>
-            <br />
-            <span className="text-white">Knowledge Engine</span>
+            <div className="mb-2">
+              <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                {titleText}
+              </span>
+              {/* Blinking cursor for title */}
+              {titleText.length < fullTitle.length && (
+                <motion.span
+                  className="text-green-400 ml-1"
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
+              )}
+            </div>
           </motion.h1>
 
-          {/* Subheading */}
-          <motion.p
-            variants={itemVariants}
-            className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
-          >
-            Harness the power of AI to explore, understand, and analyze
-            <br />
-            <span className="text-cyan-400">
-              NASA's space biology research
-            </span>{" "}
-            like never before
-          </motion.p>
-
-          {/* CTA Buttons */}
+          {/* Subheading with Dynamic Typewriter */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed min-h-[80px] flex flex-col items-center justify-center"
           >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white border-0 animate-glow px-8 py-3 text-lg"
-            >
-              Explore Now
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 text-lg"
-            >
-              Learn More
-            </Button>
-          </motion.div>
-
-          {/* Feature highlights */}
-          <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-400"
-          >
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              AI-Powered Research Assistant
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              Advanced Search Capabilities
-            </div>
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-              Interactive Knowledge Explorer
+            <p className="mb-4">
+              the power of AI to explore, understand, and analyze
+            </p>
+            <div className="text-cyan-400 font-semibold">
+              <span className="text-white">NASA's </span>
+              <span className="relative">
+                {currentText}
+                <motion.span
+                  className="text-cyan-400 ml-1"
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
+              </span>
             </div>
           </motion.div>
         </motion.div>
+      </div>{" "}
+      {/* Enhanced Floating elements with typewriter-style reveals */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* DNA Particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`dna-${i}`}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0, 0.6, 0],
+              scale: [0, 1, 0],
+              y: [0, -100],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              delay: i * 1.5,
+              ease: "easeInOut",
+            }}
+          >
+            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-blue-500 rounded-full" />
+          </motion.div>
+        ))}
+
+        {/* Bio Symbols appearing like typewriter */}
+        {["🧬", "🔬", "🛸", "⚛️", "🌌", "🚀"].map((symbol, i) => (
+          <motion.div
+            key={`symbol-${i}`}
+            className="absolute text-4xl opacity-20"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 2) * 60}%`,
+            }}
+            initial={{ opacity: 0, scale: 0, rotate: -180 }}
+            animate={{
+              opacity: [0, 0.2, 0],
+              scale: [0, 1, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              delay: 3 + i * 0.8,
+              ease: "easeInOut",
+            }}
+          >
+            {symbol}
+          </motion.div>
+        ))}
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ChevronDown className="w-6 h-6 text-cyan-400" />
-      </motion.div>
-
-      {/* Floating elements */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-4 h-4 bg-cyan-400 rounded-full opacity-60"
-        animate={{
-          y: [0, -20, 0],
-          x: [0, 10, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute top-1/3 right-1/4 w-3 h-3 bg-purple-400 rounded-full opacity-60"
-        animate={{
-          y: [0, 15, 0],
-          x: [0, -15, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/3 left-1/6 w-2 h-2 bg-pink-400 rounded-full opacity-60"
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 20, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
     </section>
   );
 };

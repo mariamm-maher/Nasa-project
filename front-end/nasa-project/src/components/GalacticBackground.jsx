@@ -61,10 +61,10 @@ const GalacticBackground = () => {
             left: `${10 + i * 20}%`,
             top: `${15 + i * 15}%`,
             background: `radial-gradient(circle at 30% 30%, ${
-              ["#06b6d4", "#a855f7", "#ec4899", "#3b82f6", "#22c55e"][i]
-            }, ${["#0891b2", "#9333ea", "#db2777", "#2563eb", "#16a34a"][i]})`,
+              ["#06b6d4", "#a855f7", "#ec4899", "#3b82f6"][i]
+            }, ${["#0891b2", "#9333ea", "#db2777", "#2563eb"][i]})`,
             boxShadow: `0 0 20px ${
-              ["#06b6d4", "#a855f7", "#ec4899", "#3b82f6", "#22c55e"][i]
+              ["#06b6d4", "#a855f7", "#ec4899", "#3b82f6"][i]
             }40`,
           }}
           animate={{
@@ -76,29 +76,6 @@ const GalacticBackground = () => {
             duration: 30 + i * 10,
             repeat: Infinity,
             ease: "easeInOut",
-          }}
-        />
-      ))}
-
-      {/* Pulsing energy waves */}
-      {[...Array(4)].map((_, i) => (
-        <motion.div
-          key={`wave-${i}`}
-          className="absolute inset-0 rounded-full border border-cyan-400 opacity-10"
-          style={{
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-          animate={{
-            scale: [0, 4],
-            opacity: [0.4, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            delay: i * 3,
-            ease: "easeOut",
           }}
         />
       ))}

@@ -1,41 +1,44 @@
 import "./App.css";
-import { motion } from "framer-motion";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GalacticBackground from "@/components/GalacticBackground";
 import StarField from "@/components/StarField";
-import Navigation from "@/components/Navigation";
-import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
+import PlanetOrbitNav from "@/components/PlanetOrbitNav";
 import Footer from "@/components/Footer";
+import HomePage from "@/pages/HomePage";
+import ChatbotPage from "@/pages/ChatbotPage";
+import SearchPage from "@/pages/SearchPage";
+import GraphPage from "@/pages/GraphPage";
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Deep space galactic background */}
-      <GalacticBackground />
+    <Router>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        {/* Deep space galactic background */}
+        <GalacticBackground />
 
-      {/* Animated starfield overlay */}
-      <StarField />
+        {/* Animated starfield overlay */}
+        <StarField />
 
-      {/* Page content */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="relative z-10"
-      >
-        {/* Navigation */}
-        <Navigation />
+        {/* Futuristic Planet Orbit Navigation */}
+        <PlanetOrbitNav />
 
-        {/* Main content */}
-        <main>
-          <HeroSection />
-          <FeaturesSection />
-        </main>
+        {/* Page content */}
+        <div className="relative z-10">
+          {/* Main content with routing */}
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/chatbot" element={<ChatbotPage />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/graph" element={<GraphPage />} />
+            </Routes>
+          </main>
 
-        {/* Footer */}
-        <Footer />
-      </motion.div>
-    </div>
+          {/* Footer */}
+          <Footer />
+        </div>
+      </div>
+    </Router>
   );
 }
 
