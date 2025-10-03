@@ -4,23 +4,28 @@ import { useState } from "react";
 import StarField from "../components/StarField";
 import GalacticBackground from "@/components/GalacticBackground";
 
+import OptimizedNavigation from "@/components/OptimizedNavigation";
+
 const mockResults = [
   {
     title: "Effects of Microgravity on Plant Growth",
     year: 2022,
-    summary: "This study explores how microgravity impacts the cellular structure and growth patterns of Arabidopsis thaliana aboard the ISS.",
+    summary:
+      "This study explores how microgravity impacts the cellular structure and growth patterns of Arabidopsis thaliana aboard the ISS.",
     link: "#",
   },
   {
     title: "Spaceflight-Induced Changes in Human Immune Response",
     year: 2021,
-    summary: "NASA's bioscience experiment reveals altered immune cell activity in astronauts after long-duration missions.",
+    summary:
+      "NASA's bioscience experiment reveals altered immune cell activity in astronauts after long-duration missions.",
     link: "#",
   },
   {
     title: "Astrobiology: Searching for Life on Mars",
     year: 2023,
-    summary: "A review of biosignature detection methods and findings from the Perseverance rover's first year on Mars.",
+    summary:
+      "A review of biosignature detection methods and findings from the Perseverance rover's first year on Mars.",
     link: "#",
   },
 ];
@@ -58,7 +63,8 @@ const SearchPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          Enter a question or keyword to discover insights from 600+ NASA bioscience experiments.
+          Enter a question or keyword to discover insights from 600+ NASA
+          bioscience experiments.
         </motion.p>
         {/* Search Bar */}
         <motion.div
@@ -72,8 +78,8 @@ const SearchPage = () => {
             className="flex-1 bg-transparent text-white placeholder-cyan-300/60 text-xl focus:outline-none"
             placeholder="Search NASA bioscience..."
             value={query}
-            onChange={e => setQuery(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             aria-label="Search NASA bioscience"
             autoFocus
           />
@@ -115,13 +121,17 @@ const SearchPage = () => {
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Telescope className="w-5 h-5 text-purple-400" />
-                  <span className="font-bold text-lg text-cyan-300">{res.title}</span>
+                  <span className="font-bold text-lg text-cyan-300">
+                    {res.title}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-cyan-200/80 mb-1">
                   <Rocket className="w-4 h-4 text-pink-400" />
                   <span>{res.year}</span>
                 </div>
-                <div className="text-base text-cyan-100/90 mb-2">{res.summary}</div>
+                <div className="text-base text-cyan-100/90 mb-2">
+                  {res.summary}
+                </div>
                 <a
                   href={res.link}
                   target="_blank"
@@ -145,6 +155,7 @@ const SearchPage = () => {
           </motion.div>
         )}
       </div>
+      <OptimizedNavigation />
     </div>
   );
 };

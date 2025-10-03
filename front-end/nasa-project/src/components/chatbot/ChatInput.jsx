@@ -10,7 +10,7 @@ const ChatInput = ({
 }) => {
   return (
     <motion.div
-      className="p-6 backdrop-blur-lg bg-black/30 border-t border-white/10 shadow-2xl"
+      className="p-6 "
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 200 }}
