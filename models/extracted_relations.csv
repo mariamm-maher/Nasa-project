@@ -1,0 +1,245 @@
+head,type,tail
+T cell,part of,immune system
+thyroid cancer,studied by,oncology research
+oncology research,studies,thyroid cancer
+hematopoietic,subclass of,stem cell
+cardiomyocyte,subclass of,stem cell
+cardiac disease,has effect,myocardial infarction
+myocardial infarction,subclass of,cardiac disease
+regenerative therapies,subclass of,biomedical innovations
+cell biology,part of,cellular biology
+cytoskeletal organization,part of,cell structure
+International Space Station,instance of,space station
+astronaut health,facet of,human health
+Embase,part of,PubMed
+cells,part of,tissue
+tissue,has parts of the class,cells
+stem cell,subclass of,biological cells
+T cell,subclass of,biological cells
+endothelial cell,subclass of,biological cells
+kidney cell,subclass of,biological cells
+stem cell,subclass of,cell
+T cell,subclass of,cell
+endothelial cell,subclass of,cell
+in vitro research,subclass of,experimental investigations
+immune system,has part,immune cells
+immune cells,part of,immune system
+Dendritic cell,part of,T lymphocyte
+T lymphocyte,has part,Dendritic cell
+CD80,instance of,protein
+CD86,instance of,protein
+natural killer,part of,innate immunity
+innate immunity,has part,natural killer
+macrophage,subclass of,immune cell
+natural killer,subclass of,T cell
+NF-κB,instance of,signaling pathways
+CD4+,subclass of,T cell
+CD8+,subclass of,T cell
+IL-2,subclass of,cytokines
+IFN-γ,subclass of,cytokines
+IFN-γ,part of,Cytokine
+Fas,subclass of,T cell
+Fas/FasL pathway,facet of,apoptosis
+macrophage,subclass of,lymphocyte
+p53,instance of,protein
+NF-κB,instance of,protein
+BAX,instance of,protein
+MCF-7,instance of,cell line
+FTC-133,instance of,cell line
+A549,instance of,cell line
+Cancer Stem Cells,subclass of,stem cell
+metastasis,facet of,cancer
+pluripotency,subclass of,markers
+pancreatic cancer,subclass of,gastrointestinal cancers
+cancer stem cell,subclass of,cancer cells
+cytoskeleton,part of,extracellular matrix
+extracellular matrix,has part,cytoskeleton
+follicular,subclass of,thyroid cancer
+stem-like,subclass of,cell proliferation
+E-cadherin,instance of,protein
+vinculin,instance of,protein
+paxillin,instance of,protein
+rotating wall bioreactor,use,Simulated microgravity
+random positioning machine,use,Simulated microgravity
+T lymphocyte,subclass of,Immune cell
+macrophage,subclass of,Immune cell
+metastasis,subclass of,cancer spread
+ELKIN1,subclass of,mechanosensitive channel
+ELKIN1,subclass of,mechanosensitive channel
+YAP1,instance of,transcriptional regulator
+ELKIN1,subclass of,focal adhesion protein
+thyroid cancer,studied by,cancer biology
+metastasis,subclass of,tumors
+thyroid cancer,subclass of,malignant phenotype
+Tissues,part of,Organ Systems
+Organ Systems,has part,Tissues
+vascular permeability,part of,vascular homeostasis
+interleukin-6,subclass of,cytokine
+endothelial nitric oxide synthase,product or material produced,nitric oxide
+Young’s modulus,facet of,biomechanical
+vascular integrity,facet of,hemodynamic stress
+spindle,part of,cytoskeletal
+β-tubulin,instance of,protein
+tissues,part of,organ system
+organ system,has part,tissues
+tissues,part of,organ system
+organ system,has part,tissues
+osteoblast,subclass of,bone health
+granulosa cells,subclass of,Reproductive cell
+microvilli,part of,Reproductive cell
+sarcomere,part of,sarcoplasmic reticulum
+in vivo,studies,blood vessel
+blood vessel,studied by,in vivo
+atherosclerosis,subclass of,circulatory disorders
+liver,subclass of,organ
+liver,has part,fat vacuole
+fat vacuole,part of,liver
+ANGPTL3,instance of,biomarker
+lipid metabolism,subclass of,metabolic stress
+metabolic diseases,has cause,obesity
+obesity,has effect,metabolic diseases
+bile acid composition,facet of,gastrointestinal dysbiosis
+nonalcoholic fatty liver disease,subclass of,diabetes
+International Space Station,operator,astronauts
+osteoporosis,has cause,collagen
+collagen,has effect,osteoporosis
+filamentous actin,part of,cytoskeletal
+actin,part of,osteoblast
+osteoblast,subclass of,bone
+osteoblast,has part,Collagen
+YAP,instance of,protein
+TAZ,instance of,protein
+mechanosignaling,facet of,cancer
+pSMAD1/5/9,subclass of,YAP
+osteoporosis,subclass of,bone loss
+renal,has part,proximal tubules
+proximal tubules,part of,renal
+kidney injury molecule 1,instance of,Biomarkers
+interleukin 6,instance of,Biomarkers
+RNA sequencing,subclass of,Transcriptomic
+cytokine–cytokine receptor,subclass of,pro-inflammatory
+mitochondrial respiration,subclass of,metabolic
+fibronectin,instance of,gene
+transforming growth factor-beta-induced protein,instance of,gene
+extracellular matrix,part of,cellular environment
+SREBF2,instance of,gene
+microgravity,part of,space
+space,has part,microgravity
+spaceflight,has part,microgravity
+Ovarian follicles,part of,ovarian follicle development
+ovarian follicle development,has part,Ovarian follicles
+follicle,part of,egg
+egg,has part,follicle
+granulosa cells,part of,granulosa cells
+granulosa cells,has part,granulosa cells
+antioxidant,has part,growth factor
+first polar body,part of,egg development
+granulosa cells,part of,maturation process
+maturation process,has part,granulosa cells
+pluripotent,subclass of,stem cell
+mitochondrial biogenesis,part of,Mitochondrial biogenesis
+Mitochondrial biogenesis,has part,mitochondrial biogenesis
+mitochondrial DNA,different from,nuclear DNA
+nuclear DNA,different from,mitochondrial DNA
+calcium handling,part of,cardiomyocyte
+sarcoplasmic reticulum,product or material produced,intracellular calcium
+sarcomere,part of,muscle
+muscle,has part,sarcomere
+cardiac cell,subclass of,cardiomyocyte
+7-day exposure period,instance of,duration of exposure to microgravity
+myocardial infarction,subclass of,cardiac disease
+cellular grafts,subclass of,biotechnology
+stem cell,subclass of,cell
+heart,instance of,organ
+Regenerative,studies,stem cell
+stem cell,studied by,Regenerative
+YAP1,instance of,protein
+MST1/2,part of,Hippo pathway
+SAV1,part of,Hippo pathway
+WWC1-3,part of,Hippo pathway
+pluripotency,part of,stem cell differentiation
+RPM,subclass of,cultured
+actin filaments,part of,cytoskeletal
+microtubules,part of,cytoskeletal
+E-cadherin,subclass of,vascular endothelial growth factor
+pluripotent stem cell,subclass of,stem cell
+RUNX1,instance of,gene
+SOX17,instance of,gene
+GATA1,instance of,gene
+megakaryocyte,subclass of,erythrocyte
+cell cycle,has part,G1/S
+cell cycle,has part,G2/M
+G1/S,part of,cell cycle
+G2/M,part of,cell cycle
+apoptosis,subclass of,programmed cell death
+spheroids,subclass of,three-dimensional cellular organization
+Pluripotent stem cell,subclass of,stem cell
+PI3K-Akt pathway,subclass of,survival signaling
+RUNX1,instance of,gene
+hematopoietic,has part,clusters
+clusters,part of,hematopoietic
+Regenerative medicine,subclass of,biomedical research
+neural crest,subclass of,stem cell
+insulin,medical condition treated,diabetes
+diabetes,drug used for treatment,insulin
+cell–cell,part of,cell development
+PI3K-Akt,instance of,signaling pathway
+mTOR,instance of,signaling pathway
+neural crest,subclass of,stem cell
+pancreatic islet,medical condition treated,diabetes
+diabetes,drug used for treatment,pancreatic islet
+spaceflight,part of,space exploration
+space exploration,has part,spaceflight
+Escherichia coli,taxonomic type,Salmonella Typhimurium
+innate immunity,has cause,pathogens
+low fluid shear,facet of,microgravity
+Fur,instance of,gene
+Escherichia coli,has effect,virulence
+Hfq,subclass of,regulatory protein
+Gram-negative,subclass of,pathogen
+Gram-positive,subclass of,pathogen
+virulence,facet of,pathogen
+mitochondrial biogenesis,instance of,biological processes
+cells,part of,tissues
+tissues,has parts of the class,cells
+B Lymphocytes,has part,Neutrophils
+Apoptosis,subclass of,Cell culture
+Oocyte,subclass of,Cardiomyocyte
+Salmonella enterica,instance of,Pathogen
+Salmonella Typhimurium,instance of,Pathogen
+T cell,subclass of,stem cell
+regenerative medicine,studies,regenerative therapies
+regenerative therapies,studied by,regenerative medicine
+biological,has part,physiological systems
+physiological systems,part of,biological
+mitochondrial,subclass of,cell
+T cell,subclass of,immune response
+medical breakthroughs,subclass of,technological
+space missions,studied by,scientific
+space missions,studied by,technological
+scientific,studies,space missions
+technological,studies,space missions
+space platform,subclass of,simulators
+human health,studied by,biology
+T cell,part of,immune system
+liver,instance of,vital organs
+kidneys,instance of,vital organs
+stem cell,subclass of,cells
+cardiomyocyte,subclass of,stem cell
+regenerative medicine,subclass of,medicine
+N.A. and J.S.V.,has part,"M.G., M.S.T., M.I.-C."
+"M.G., M.S.T., M.I.-C.",part of,N.A. and J.S.V.
+N.A. and J.S.V.,has part,"M.G., M.S.T., M.I.-C."
+N.A.,has part,J.S.
+N.A.,has part,J.S.
+J.S.,part of,N.A.
+J.S.,part of,N.A.
+J.S.,part of,N.A.
+J.S. and J.A.-I.,has part,J.S.I.-C
+J.S. and J.A.-I.,has part,J.S.I.-C
+J.S. and J.A.-I.,part of,J.S.I.-C
+J.S. and J.A.-I.,part of,J.S.I.-C
+J.S.I.-C,part of,J.S. and J.A.-I.
+Declaration of Conflicts of Interest,facet of,conflicts of interest
+injury,has cause,property
+property,has effect,injury
