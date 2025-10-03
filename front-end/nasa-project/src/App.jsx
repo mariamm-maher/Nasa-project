@@ -10,6 +10,9 @@ import SearchPage from "@/pages/SearchPage";
 import GraphPage from "@/pages/GraphPage";
 
 function App() {
+  
+
+  // console.log("Current route:", location.pathname);
   return (
     <Router>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">

@@ -48,17 +48,16 @@
     background: linear-gradient(to bottom, rgb(34, 211, 238), rgb(196, 181, 253));
   }
 }
-}
 
 @layer base {
-  * {
+  /* * {
     @apply border-border;
-  }
-  body {
+  } */
+  /* body {
     @apply bg-background text-foreground font-sans;
     background: linear-gradient(135deg, #0b0b1e 0%, #1b262c 50%, #0b0b1e 100%);
     min-height: 100vh;
-  }
+  } */
 }
 
 /* Galactic animations */
