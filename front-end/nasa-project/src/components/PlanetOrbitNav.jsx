@@ -62,6 +62,17 @@ const PlanetOrbitNav = () => {
       orbitRadius: 130,
       orbitDuration: 9,
     },
+    {
+      id: "sources",
+      label: "Sources",
+      icon: Orbit,
+      path: "/sources",
+      gradient:
+        "radial-gradient(circle at 30% 30%, #a78bfa 0%, #8b5cf6 40%, #581c87 100%)", // Purple planet
+      rings: false,
+      orbitRadius: 150,
+      orbitDuration: 11,
+    },
   ];
 
   const handlePlanetClick = (planet) => {

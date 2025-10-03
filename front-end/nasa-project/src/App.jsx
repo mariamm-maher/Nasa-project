@@ -8,10 +8,9 @@ import HomePage from "@/pages/HomePage";
 import ChatbotPage from "@/pages/ChatbotPage";
 import SearchPage from "@/pages/SearchPage";
 import GraphPage from "@/pages/GraphPage";
+import SourcesPage from "@/pages/sources";
 
 function App() {
-  
-
   // console.log("Current route:", location.pathname);
   return (
     <Router>
@@ -34,11 +33,12 @@ function App() {
               <Route path="/chatbot" element={<ChatbotPage />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/graph" element={<GraphPage />} />
+              <Route path="/sources" element={<SourcesPage />} />
             </Routes>
           </main>
 
           {/* Footer */}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </Router>
