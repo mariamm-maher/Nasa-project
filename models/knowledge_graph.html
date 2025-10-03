@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #070620;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "id": "hematopoietic", "label": "hematopoietic", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "stem cell", "label": "stem cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "biological cells", "label": "biological cells", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "cell", "label": "cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "cardiomyocyte", "label": "cardiomyocyte", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "T cell", "label": "T cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "endothelial cell", "label": "endothelial cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "kidney cell", "label": "kidney cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "CD80", "label": "CD80", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "protein", "label": "protein", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "CD86", "label": "CD86", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "natural killer", "label": "natural killer", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "CD4+", "label": "CD4+", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "CD8+", "label": "CD8+", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Fas", "label": "Fas", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "p53", "label": "p53", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "NF-\u03baB", "label": "NF-\u03baB", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "BAX", "label": "BAX", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Cancer Stem Cells", "label": "Cancer Stem Cells", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "E-cadherin", "label": "E-cadherin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "vinculin", "label": "vinculin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "paxillin", "label": "paxillin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "spindle", "label": "spindle", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "cytoskeletal", "label": "cytoskeletal", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "\u03b2-tubulin", "label": "\u03b2-tubulin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "filamentous actin", "label": "filamentous actin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "YAP", "label": "YAP", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "TAZ", "label": "TAZ", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "fibronectin", "label": "fibronectin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "gene", "label": "gene", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "transforming growth factor-beta-induced protein", "label": "transforming growth factor-beta-induced protein", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "SREBF2", "label": "SREBF2", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "pluripotent", "label": "pluripotent", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Regenerative", "label": "Regenerative", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "YAP1", "label": "YAP1", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "actin filaments", "label": "actin filaments", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "microtubules", "label": "microtubules", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "pluripotent stem cell", "label": "pluripotent stem cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "RUNX1", "label": "RUNX1", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "SOX17", "label": "SOX17", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "GATA1", "label": "GATA1", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Pluripotent stem cell", "label": "Pluripotent stem cell", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "neural crest", "label": "neural crest", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "Fur", "label": "Fur", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "mitochondrial", "label": "mitochondrial", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "J.S. and J.A.-I.", "label": "J.S. and J.A.-I.", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "white"}, "id": "J.S.I.-C", "label": "J.S.I.-C", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "hematopoietic", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "stem cell", "label": "subclass of", "to": "biological cells", "width": 1}, {"arrows": "to", "from": "stem cell", "label": "subclass of", "to": "cell", "width": 1}, {"arrows": "to", "from": "cardiomyocyte", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "T cell", "label": "subclass of", "to": "biological cells", "width": 1}, {"arrows": "to", "from": "T cell", "label": "subclass of", "to": "cell", "width": 1}, {"arrows": "to", "from": "T cell", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "endothelial cell", "label": "subclass of", "to": "biological cells", "width": 1}, {"arrows": "to", "from": "endothelial cell", "label": "subclass of", "to": "cell", "width": 1}, {"arrows": "to", "from": "kidney cell", "label": "subclass of", "to": "biological cells", "width": 1}, {"arrows": "to", "from": "CD80", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "CD86", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "natural killer", "label": "subclass of", "to": "T cell", "width": 1}, {"arrows": "to", "from": "CD4+", "label": "subclass of", "to": "T cell", "width": 1}, {"arrows": "to", "from": "CD8+", "label": "subclass of", "to": "T cell", "width": 1}, {"arrows": "to", "from": "Fas", "label": "subclass of", "to": "T cell", "width": 1}, {"arrows": "to", "from": "p53", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "NF-\u03baB", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "BAX", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "Cancer Stem Cells", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "E-cadherin", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "vinculin", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "paxillin", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "spindle", "label": "part of", "to": "cytoskeletal", "width": 1}, {"arrows": "to", "from": "\u03b2-tubulin", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "filamentous actin", "label": "part of", "to": "cytoskeletal", "width": 1}, {"arrows": "to", "from": "YAP", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "TAZ", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "fibronectin", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "transforming growth factor-beta-induced protein", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "SREBF2", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "pluripotent", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "Regenerative", "label": "studies", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "YAP1", "label": "instance of", "to": "protein", "width": 1}, {"arrows": "to", "from": "actin filaments", "label": "part of", "to": "cytoskeletal", "width": 1}, {"arrows": "to", "from": "microtubules", "label": "part of", "to": "cytoskeletal", "width": 1}, {"arrows": "to", "from": "pluripotent stem cell", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "RUNX1", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "SOX17", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "GATA1", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "Pluripotent stem cell", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "neural crest", "label": "subclass of", "to": "stem cell", "width": 1}, {"arrows": "to", "from": "Fur", "label": "instance of", "to": "gene", "width": 1}, {"arrows": "to", "from": "mitochondrial", "label": "subclass of", "to": "cell", "width": 1}, {"arrows": "to", "from": "J.S. and J.A.-I.", "label": "part of", "to": "J.S.I.-C", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
