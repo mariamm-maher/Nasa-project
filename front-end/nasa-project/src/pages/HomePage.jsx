@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+
+import OptimizedNavigation from "@/components/OptimizedNavigation";
 
 const HomePage = () => {
   return (
@@ -10,6 +13,8 @@ const HomePage = () => {
       transition={{ duration: 0.8 }}
       className="relative"
     >
+      {/* PlanetOrbitNavWithSizeControl removed, now global in App.jsx */}
+      <OptimizedNavigation />
       <HeroSection />
       <FeaturesSection />
     </motion.div>

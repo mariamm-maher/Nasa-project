@@ -1,0 +1,91 @@
+/* Performance optimizations for ChatbotPage */
+
+/* Force GPU acceleration for heavy animations */
+.chatbot-page {
+  transform: translateZ(0);
+  will-change: auto;
+  contain: layout style paint;
+}
+
+/* Optimize navigation menu for ChatbotPage */
+.chatbot-page .navigation-menu {
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .chatbot-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize backdrop-blur performance */
+.chatbot-page .backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  contain: layout style paint;
+}
+
+/* Improve transform performance */
+.chatbot-page [data-framer-motion] {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Optimize star animations */
+.chatbot-page .galaxy-stars {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  contain: layout style;
+}
+
+/* Ensure proper layer isolation */
+.chatbot-page .background-layer {
+  isolation: isolate;
+  contain: layout style paint;
+}
+
+.chatbot-page .content-layer {
+  isolation: isolate;
+  contain: layout style paint;
+}
+
+.chatbot-page .navigation-layer {
+  isolation: isolate;
+  contain: layout style paint;
+  position: fixed;
+  pointer-events: none;
+}
+
+.chatbot-page .navigation-layer > * {
+  pointer-events: auto;
+}
+
+/* Optimize scrolling performance */
+.chatbot-page .messages-container {
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+  contain: layout style;
+}
+
+/* Optimize typing animation */
+.chatbot-page .typewriter-cursor {
+  will-change: opacity;
+  contain: layout style;
+}
+
+/* GPU layer promotion for heavy elements */
+.chatbot-page .message-bubble {
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Reduce paint operations */
+.chatbot-page .gradient-background {
+  will-change: auto;
+  contain: layout style paint;
+}

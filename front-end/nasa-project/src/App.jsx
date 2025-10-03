@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 import GalacticBackground from "@/components/GalacticBackground";
 import StarField from "@/components/StarField";
 import PlanetOrbitNav from "@/components/PlanetOrbitNav";
@@ -9,9 +10,9 @@ import ChatbotPage from "@/pages/ChatbotPage";
 import SearchPage from "@/pages/SearchPage";
 import GraphPage from "@/pages/GraphPage";
 import SourcesPage from "@/pages/sources";
+import PlanetOrbitNavWithSizeControl from "./components/PlanetOrbitNavWithSizeControl";
 
 function App() {
-  // console.log("Current route:", location.pathname);
   return (
     <Router>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
